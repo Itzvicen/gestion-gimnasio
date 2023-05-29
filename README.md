@@ -36,6 +36,7 @@ npm install
 cd backend
 npm install
 docker compose up -d
+node server.js
 ```
 ## 🤝 Contribuciones
 ¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, sigue los pasos a continuación:
