@@ -1,4 +1,4 @@
-# 🏋️‍♂️ Sistema de Gestión de Miembros de Gimnasio 🏋️‍♀️
+# Sistema de Gestión de Miembros de Gimnasio 🏋️‍♀️
 
 ¡Bienvenido/a al Sistema de Gestión de Miembros de Gimnasio! Este proyecto te permite administrar los miembros de un gimnasio de forma sencilla y eficiente.
 
