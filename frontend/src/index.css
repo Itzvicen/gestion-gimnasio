@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient {
+  background-color:hsla(0,100%,50%,1);
+  background-image:
+  radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+  radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+  radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+  radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 230px; /* ajusta el ancho a tu gusto */
+}
+
+.sidebar-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+}
+
+.main {
+  margin-left: 230px;
+  width: calc(100% - 230px); /* ajusta el ancho de la zona principal en función de la sidebar */
+}
+
+/* Modifica el estilo de la scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #f5f5f5;
+}
+
+/* Modifica el estilo del thumb (la barra de desplazamiento) */
+::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 10px;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+* .dark {
+  background-color: #1F2937;
+}
+
+/* Media quries */
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 64px;
+    width: calc(100% - 64px);
+  }
+}
