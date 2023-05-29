@@ -1,7 +1,8 @@
 # Sistema de Gestión de Miembros de Gimnasio 🏋️‍♀️
 ¡Bienvenido/a al Sistema de Gestión de Miembros de Gimnasio! Este proyecto te permite administrar los miembros de un gimnasio de forma sencilla y eficiente.
 
-<img width="1432" alt="image" src="https://github.com/Itzvicen/gestion-gimnasio/assets/92974434/2011211c-a014-4ae9-8e06-fd33a35b1334">
+![image](https://github.com/Itzvicen/gestion-gimnasio/assets/92974434/75bb2b65-b5df-45af-a36f-5050456444f6)
+
 
 Pruebalo ahora: https://gimnasio.demo.neatly.es
 
