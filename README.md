@@ -23,13 +23,7 @@ Pruebalo ahora: https://gimnasio.demo.neatly.es
 
 1. Clona el repositorio en tu máquina local.
 2. Navega a la carpeta del proyecto.
-3. Instala las dependencias del frontend:
-
-```bash
-cd frontend
-npm install
-```
-   
+3. Añade las variables de entorno en el archivo .env tanto en el backend como el frontend
 4. Instala las dependencias del backend:
 
 ```bash
@@ -38,6 +32,13 @@ npm install
 docker compose up -d
 node server.js
 ```
+5. Instala las dependencias del frontend:
+
+```bash
+cd frontend
+npm install
+```
+
 ## 🤝 Contribuciones
 ¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, sigue los pasos a continuación:
 
