@@ -6,6 +6,11 @@
 
 Pruebalo ahora: https://gimnasio.demo.neatly.es
 
+## Credenciales 🔐
+
+- Usuario: administrador
+- Contraseña: admin
+
 ## 🚀 Características
 
 - Permite ver la lista de todos los miembros del gimnasio.
