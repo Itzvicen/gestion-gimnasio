@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import SearchBar from "./SearchBar";
 import TableLoader from "./TableLoader";
 
+// Definimos estilos personalizados para dos tipos de modal
+// Estos estilos colocan el modal en el centro de la página
 const customStyles = {
   content: {
     top: "50%",
@@ -18,6 +20,7 @@ const customStyles = {
   },
 };
 
+// Estos estilos colocan el modal en la parte superior derecha
 const customStylesPop = {
   content: {
     top: "10",
@@ -30,6 +33,7 @@ const customStylesPop = {
   },
 };
 
+// Función para obtener un token de autenticación del almacenamiento local
 const getAuthToken = () => {
   return localStorage.getItem("token");
 };
@@ -37,20 +41,22 @@ const getAuthToken = () => {
 Modal.setAppElement("#root");
 
 const Dashboard = () => {
-  const [members, setMembers] = useState([]);
-  const [filteredMembers, setFilteredMembers] = useState([]); // nuevo estado para miembros filtrados
-  const [editingMember, setEditingMember] = useState(null);
-  const [editingMemberModalOpen, setEditingMemberModalOpen] = useState(false);
-  const [deletingMember, setDeletingMember] = useState(null);
-  const [invalidDates, setInvalidDates] = useState(false); // nuevo estado para validar fechas
-  const [success, setSuccess] = useState(false);
-  const [successEdit, setSuccessEdit] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [previewImage, setPreviewImage] = useState(null);
-  const [addingMember, setAddingMember] = useState(false);
-  const [invalidFileType, setInvalidFileType] = useState(false);
-  const [showErrorFieldsModal, setShowErrorFieldsModal] = useState(false);
+  // Se declaran los estados que serán utilizados en el componente
+  const [members, setMembers] = useState([]); // Estado para mantener los datos de los miembros
+  const [filteredMembers, setFilteredMembers] = useState([]); // Estado para mantener los datos de los miembros filtrados
+  const [editingMember, setEditingMember] = useState(null); // Estado para controlar qué miembro se está editando
+  const [editingMemberModalOpen, setEditingMemberModalOpen] = useState(false); // Estado para controlar la apertura del modal de edición de miembro
+  const [deletingMember, setDeletingMember] = useState(null); // Estado para controlar qué miembro se está eliminando
+  const [invalidDates, setInvalidDates] = useState(false); // Estado para validar las fechas de los miembros
+  const [success, setSuccess] = useState(false); // Estado para indicar si la operación fue exitosa
+  const [successEdit, setSuccessEdit] = useState(false); // Estado para indicar si la edición fue exitosa
+  const [isLoading, setIsLoading] = useState(true); // Estado para indicar si los datos de los miembros aún se están cargando
+  const [previewImage, setPreviewImage] = useState(null); // Estado para mantener la vista previa de la imagen de los miembros
+  const [addingMember, setAddingMember] = useState(false); // Estado para controlar si se está en proceso de añadir un miembro
+  const [invalidFileType, setInvalidFileType] = useState(false); // Estado para validar el tipo de archivo de la imagen
+  const [showErrorFieldsModal, setShowErrorFieldsModal] = useState(false); // Estado para mostrar el modal de error de campos
   const [newMember, setNewMember] = useState({
+    // Estado para mantener la información del nuevo miembro
     first_name: "",
     last_name: "",
     email: "",
@@ -64,21 +70,21 @@ const Dashboard = () => {
   const API_URL = "https://api.gimnasio.neatly.es/api";
   const PIC_URL = "https://api.gimnasio.neatly.es"
 
+  // Función para obtener los datos de los miembros de la API
   const fetchMembers = async () => {
     try {
       const authToken = getAuthToken();
       const response = await axios.get(`${API_URL}/members`, {
-        headers: { Authorization: `Bearer ${authToken}` },
+        headers: { Authorization: `Bearer ${authToken}` }, // Pasamos el token en los headers
       });
-      setMembers(response.data);
-      console.log(response.data);
-      setIsLoading(false);
+      setMembers(response.data); // Establecemos los datos de los miembros
+      setIsLoading(false); // Indicamos que ya se han cargado los datos
     } catch (error) {
-      console.error("Error fetching members:", error);
+      console.error("Error fetching members:", error); // En caso de error, se imprime en consola
     }
   };
 
-  // Función para editar miembros
+  // Función para actualizar un miembro
   const updateMember = async (member) => {
     try {
       const authToken = getAuthToken();
@@ -105,7 +111,7 @@ const Dashboard = () => {
     }
   };
 
-  // Funcion para subir foto
+  // Función para subir una foto de un miembro
   const uploadMemberPicture = async (memberId, image) => {
     try {
       const authToken = getAuthToken();
@@ -126,7 +132,7 @@ const Dashboard = () => {
     }
   };
   
-  // Encargado de guardar los cambios realizados al miembro y cerrar el modal
+  // Función para guardar los cambios de un miembro editado y cerrar el modal
   const handleSaveEditedMember = async (e) => {
     e.preventDefault();
   
@@ -157,8 +163,7 @@ const Dashboard = () => {
     }
   };
   
-
-  // Función para eliminar miembros
+  // Función para eliminar un miembro
   const deleteMember = async (memberId) => {
     try {
       const authToken = getAuthToken();
@@ -169,11 +174,13 @@ const Dashboard = () => {
       console.error("Error deleting member:", error);
     }
   };
-
+  
+  // Usamos el hook useEffect para cargar los datos de los miembros cuando el componente se monta
   useEffect(() => {
     fetchMembers();
   }, []);
 
+  // Función para abrir el modal de edición de un miembro
   const handleUpdateMember = (member) => {
     if(member.image_path === "uploads/pictures/default.png" || member.image_path === "null") {
       setPreviewImage(null)
@@ -184,8 +191,7 @@ const Dashboard = () => {
     setEditingMemberModalOpen(true);
   };
   
-
-  // También, crea una función para manejar el cierre del modal de edición
+  // Función para cancelar la edición de un miembro y cerrar el modal
   const handleCancelEditMember = () => {
     setEditingMemberModalOpen(false);
     URL.revokeObjectURL(previewImage);
@@ -196,6 +202,7 @@ const Dashboard = () => {
   const handleDeleteButtonClick = (member) => {
     setDeletingMember(member);
   };
+
 
   const handleConfirmDelete = async () => {
     await deleteMember(deletingMember.id);
@@ -212,6 +219,7 @@ const Dashboard = () => {
     setAddingMember(true);
   };
   
+  // Función para guardar un nuevo miembro y recargar los miembros
   const handleSaveNewMember = async (e) => {
     e.preventDefault();
   
@@ -265,6 +273,7 @@ const Dashboard = () => {
     }
   };
   
+  // Función para cancelar la adición de un miembro y cerrar el modal
   const handleCancelAddMember = () => {
     URL.revokeObjectURL(previewImage);
     setPreviewImage(null);
@@ -282,21 +291,20 @@ const Dashboard = () => {
     setInvalidDates(false);
   };
 
-  // Funciones para mostrar mensaje de éxito
+  // Funciones para mostrar y cancelar mensaje de éxito
   const handleCancelSuccess = () => {
     setSuccess(false);
   };
 
-  // Funciones para mostrar mensaje de éxito al editar
+  // Funciones para mostrar y cancelar mensaje de éxito al editar
   const handleCancelSuccessEdit = () => {
     setSuccessEdit(false);
   };
 
-  // Funcion para mostrar mensaje de error tipo archivo
+  // Funcion para mostrar y cerrar mensaje de error de tipo de archivo
   const handleCloseInvalidFileType = () => {
     setInvalidFileType(false);
   };
-
 
   return (
     <div className="main">
