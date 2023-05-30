@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import ErrorModal from './ErrorModal'; // Importa ErrorModal
+=======
+import { useNavigate } from "react-router-dom";
+import ErrorModal from './ErrorModal';
+>>>>>>> a420465 (Comentando código)
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -9,7 +14,12 @@ const LoginForm = ({ onLogin }) => {
   const [error, setError] = useState(null);
   const [showErrorModal, setShowErrorModal] = useState(false); // Agrega estado para mostrar y ocultar el modal
 
+<<<<<<< HEAD
   const navigate = useNavigate(); // Crea una instancia de navigate
+=======
+  // Crea una instancia de navigate
+  const navigate = useNavigate();
+>>>>>>> a420465 (Comentando código)
 
   const API_URL = "https://api.gimnasio.neatly.es/api";
 

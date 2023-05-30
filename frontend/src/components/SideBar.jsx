@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,11 +7,28 @@ import UserSkeleton from "./UserSkeleton";
 
 Modal.setAppElement("#root");
 
+=======
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
+import UserSkeleton from "./UserLoader";
+
+// Configuramos react-modal para señalar el elemento raíz de nuestra aplicación
+Modal.setAppElement("#root");
+
+// Función para obtener un token de autenticación del almacenamiento local
+>>>>>>> a420465 (Comentando código)
 const getAuthToken = () => {
   return localStorage.getItem("token");
 };
 
 const SideBar = () => {
+<<<<<<< HEAD
+=======
+
+  // Definimos el estado para los modales y el usuario
+>>>>>>> a420465 (Comentando código)
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
@@ -18,7 +36,11 @@ const SideBar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState("system");
 
+<<<<<<< HEAD
   // Cambiar tema de la app
+=======
+  // useEffect para cambiar el tema de la app en base al estado theme
+>>>>>>> a420465 (Comentando código)
   useEffect(() => {
     if (theme === "dark") {
       document.body.classList.add("dark");
@@ -27,18 +49,31 @@ const SideBar = () => {
     }
   }, [theme]);
 
+<<<<<<< HEAD
+=======
+  // Manejador de evento para cambiar el tema cuando el usuario selecciona una opción diferente
+>>>>>>> a420465 (Comentando código)
   const handleThemeChange = (event) => {
     setTheme(event.target.value);
   };
 
   const API_URL = "https://api.gimnasio.neatly.es/api";
 
+<<<<<<< HEAD
+=======
+  // Función para obtener información de usuario desde la API
+>>>>>>> a420465 (Comentando código)
   const fetchUser = async () => {
     try {
       const authToken = getAuthToken();
       const response = await axios.get(`${API_URL}/admin`, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
+<<<<<<< HEAD
+=======
+
+      // Establecer los datos del usuario en el estado y detener el loading
+>>>>>>> a420465 (Comentando código)
       setUser(response.data[0]);
       console.log(response.data);
       setIsLoading(false);
@@ -47,15 +82,27 @@ const SideBar = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  // useEffect para obtener la información del usuario cuando el componente se monta
+>>>>>>> a420465 (Comentando código)
   useEffect(() => {
     fetchUser();
   }, []);
 
+<<<<<<< HEAD
+=======
+  // Manejador de evento para realizar el logout del usuario
+>>>>>>> a420465 (Comentando código)
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
 
+<<<<<<< HEAD
+=======
+  // Funciones para abrir y cerrar el modal
+>>>>>>> a420465 (Comentando código)
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -64,7 +111,11 @@ const SideBar = () => {
     setIsModalOpen(false);
   };
 
+<<<<<<< HEAD
   // Cambiar el tema
+=======
+  // Funciones para abrir y cerrar el modal de configuración
+>>>>>>> a420465 (Comentando código)
   const openSettingsModal = () => {
     setIsSettingsModalOpen(true);
   };
