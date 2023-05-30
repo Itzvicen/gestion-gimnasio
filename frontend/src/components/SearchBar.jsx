@@ -1,48 +1,32 @@
 import { useState } from 'react';
 
-<<<<<<< HEAD
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('');
-
-=======
 // Recibe un callback onSearch como prop
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
 
   // Función para obtener un token de autenticación del almacenamiento local
->>>>>>> a420465 (Comentando código)
   const getAuthToken = () => {
     return localStorage.getItem('token');
   };
 
   const API_URL = "https://api.gimnasio.neatly.es/api";
 
-<<<<<<< HEAD
-=======
   // Se ejecutará cuando el usuario escriba en el campo de búsqueda
->>>>>>> a420465 (Comentando código)
   const handleQueryChange = async (event) => {
     const newQuery = event.target.value;
     setQuery(newQuery);
 
     const authToken = getAuthToken();
-<<<<<<< HEAD
-=======
 
     // Realizamos una petición a la API para buscar miembros con el nombre que coincide con la consulta
->>>>>>> a420465 (Comentando código)
     const response = await fetch(`${API_URL}/members/search?name=${newQuery}`, {
       headers: { Authorization: `Bearer ${authToken}` },
     });
     const data = await response.json();
     onSearch(data);
   };
-<<<<<<< HEAD
-
-=======
   
   // Esta función se ejecutará cuando se quiera limpiar el campo de búsqueda
->>>>>>> a420465 (Comentando código)
   const handleClearClick = () => {
     setQuery('');
     onSearch([]);

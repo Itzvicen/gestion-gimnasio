@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 const express = require('express');
 const routerAdmin = express.Router();
 const routerMembers = express.Router();
@@ -246,4 +244,3 @@ app.use('/api/members', routerMembers);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Servidor iniciado en el puerto ${PORT}`));
->>>>>>> d23514d (Comentando código)
