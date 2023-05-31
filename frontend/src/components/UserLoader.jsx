@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const UserSkeleton = () => {
+const UserLoader = () => {
   return (
     <ContentLoader
       speed={1}
@@ -18,4 +18,4 @@ const UserSkeleton = () => {
   );
 };
 
-export default UserSkeleton;
+export default UserLoader;
