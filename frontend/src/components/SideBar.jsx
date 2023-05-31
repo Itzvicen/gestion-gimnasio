@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import UserSkeleton from "./UserLoader";
+import UserLoader from "./UserLoader";
 
 // Configuramos react-modal para señalar el elemento raíz de nuestra aplicación
 Modal.setAppElement("#root");
@@ -225,7 +225,7 @@ const SideBar = () => {
           </nav>
 
           {isLoading ? (
-            <UserSkeleton />
+            <UserLoader />
           ) : (
             <a href="#" className="flex items-center px-4 -mx-2">
               <img
