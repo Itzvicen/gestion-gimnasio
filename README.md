@@ -23,7 +23,7 @@ Pruebalo ahora: https://gimnasio.demo.neatly.es
 
 - Frontend: React.js
 - Backend: Node.js, Express.js
-- Base de datos: MySQL (u otro sistema de gestión de bases de datos relacional)
+- Base de datos: MySQL
 - Comunicación: API RESTful
 
 ## 📋 Instrucciones de instalación
